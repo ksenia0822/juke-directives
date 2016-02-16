@@ -21,3 +21,28 @@ juke.controller('SongChooseCtrl', function ($scope, SongFactory) {
   };
 
 });
+
+juke.directive('doubleClick', function(PlayerFactory){
+  return {
+    restrict: 'A',
+    scope: {
+      doubleClick: '&',
+    },
+    link: function(scope, element) {
+      element.on('dblclick', function () {
+        console.log('we clicked')
+        scope.doubleClick();
+
+        scope.toggle = function (song) {
+          if (song !== PlayerFactory.getCurrentSong()) {
+            PlayerFactory.start(song, scope.songs);
+            } else if ( PlayerFactory.isPlaying() ) {
+              PlayerFactory.pause();
+            } else {
+              PlayerFactory.resume();
+            }
+        };        
+      });
+    }
+  }
+})
