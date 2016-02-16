@@ -1,7 +1,7 @@
 <div class="album">
   <p>
     <h3>{{ album.name }}
-    	<a href="mailto:?subject=Check out this cool album!&body=Here is the link: <a href='/albums/ + {{  album._id }}'">
+    	<a href="mailto:?subject=Check out this cool album!&body=Here is the link: /api/album/{{album._id}}">
     	<span class='glyphicon glyphicon-envelope'></span>
     	</h3>
     <img ng-src="{{ album.imageUrl }}" class="img-thumbnail">
