@@ -10,6 +10,10 @@ juke.controller('SidebarCtrl', function ($scope) {
 juke.directive('sidebar', function() {
 	return {
 		restrict: 'E',
-		templateUrl: '/js/sidebar/templates/sidebar.html'
+		templateUrl: '/js/sidebar/templates/sidebar.html', 
+		link: function(scope, element, attributes) {
+			console.log('hello');
+		}
+
 	}
 })
