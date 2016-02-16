@@ -12,9 +12,7 @@
     <script src="/js/album/album.controllers.js" defer></script>
     <script src="/js/album/album.factory.js" defer></script>
     <script src="/js/album/album.states.js" defer></script>
-    <script src="/js/player/player.controller.js" defer></script>
     <script src="/js/player/player.factory.js" defer></script>
-    <script src="/js/sidebar/sidebar.controller.js" defer></script>
     <script src="/js/artist/artist.controllers.js" defer></script>
     <script src="/js/artist/artist.factory.js" defer></script>
     <script src="/js/artist/artist.states.js" defer></script>
@@ -23,14 +21,15 @@
     <script src="/js/playlist/playlist.states.js" defer></script>
     <script src="/js/playlist/playlist.factory.js" defer></script>
     <script src="/js/playlist/playlist.controllers.js" defer></script>
+    <script src="/js/utils/directives.js" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
-  <body ng-app="juke">
+  <body ng-app="juke" key-toggle >
     <div id="main" class="container-fluid">
     
   <div class="col-xs-2"> 
     <sidebar></sidebar>
   </div>
-
       <div class="col-xs-10">
         <ui-view></ui-view>
       </div>

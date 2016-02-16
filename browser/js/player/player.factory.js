@@ -7,7 +7,8 @@ juke.factory('PlayerFactory', function ($rootScope) {
   var playing = false,
       currentSong = null,
       currentList = [],
-      progress = 0;
+      progress = 0,
+      isShuffleOn = false;
 
   // initialize the audio element
 
@@ -37,6 +38,7 @@ juke.factory('PlayerFactory', function ($rootScope) {
   };
 
   player.isPlaying = function () {
+    // console.log(progress)
     return playing;
   };
 
@@ -53,7 +55,8 @@ juke.factory('PlayerFactory', function ($rootScope) {
   }
 
   player.next = function () {
-    skip(1);
+    if(isShuffleOn) skip(Math.floor(Math.random() * currentList.length))
+    else skip(1);
   };
 
   player.previous = function () {
@@ -63,6 +66,15 @@ juke.factory('PlayerFactory', function ($rootScope) {
   player.getProgress = function () {
     return progress;
   };
+
+  player.shuffle = function() {
+    if(isShuffleOn) isShuffleOn = false;
+    else isShuffleOn = true;
+    // console.log(Math.floor(Math.random() * currentList.length))
+  }
+  player.isItShuffling = function() {
+    return isShuffleOn;
+  }
 
   // audio event listening
 

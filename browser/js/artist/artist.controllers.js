@@ -11,8 +11,5 @@ juke.controller('ArtistsCtrl', function ($scope, $log, allArtists) {
 /* ARTIST (SINGULAR) CONTROLLER */
 
 juke.controller('ArtistCtrl', function ($scope, $log, PlayerFactory, theArtist) {
-
   $scope.artist = theArtist;
-
-
  });
