@@ -14,9 +14,17 @@ juke.factory('PlayerFactory', function ($rootScope) {
 
   var audio = document.createElement('audio');
 
+
+
+
   // define the factory value
 
   var player = {};
+
+  player.setProgress = function(fraction) {
+    var x = audio.duration * fraction;
+    audio.currentTime = x;
+  }
 
   player.pause = function () {
     audio.pause();

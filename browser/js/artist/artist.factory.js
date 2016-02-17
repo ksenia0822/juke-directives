@@ -3,10 +3,18 @@
 juke.factory('ArtistFactory', function ($http, $q, AlbumFactory, SongFactory) {
 
   var ArtistFactory = {};
+  var allArtists = null;
 
   ArtistFactory.fetchAll = function () {
-    return $http.get('/api/artists')
-    .then(res => res.data);
+    if(allArtists) return allArtists;
+    else {
+      return $http.get('/api/artists')
+      .then(function(res) {
+        allArtists = res.data;
+        return allArtists;
+      });
+      
+    }
   };
 
   ArtistFactory.fetchById = function (id) {

@@ -59,10 +59,8 @@ juke.directive('songList', function(PlayerFactory,  PlaylistFactory){
     templateUrl: '/js/album/templates/song-list.html',
     scope: {
       songs: '='
-      
     },
     link: function(scope, element, attricutes) {
-      console.log('Im an  song-list');
       
       scope.toggle = function (song) {
       if (song !== PlayerFactory.getCurrentSong()) {
@@ -119,5 +117,20 @@ juke.directive('keyToggle', function(PlayerFactory) {
   };
 });
 
+juke.directive('scruble', function(PlayerFactory) {
+  return {
+    restrict: 'A',
+    link: function(scope, element) {
+     
+      element.on('click', function(event) {
+         console.log('element is: ', element);
+         console.log('element[0] is: ', element[0]);
+        var newProgress = (event.clientX - element[0].offsetLeft)/element[0].clientWidth;
+        PlayerFactory.setProgress(newProgress);
+      })
+    }
+
+  }
+})
 
 

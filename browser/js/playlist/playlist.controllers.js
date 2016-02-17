@@ -22,7 +22,6 @@ juke.controller('PlaylistFormCtrl', function ($scope, $state, PlaylistFactory) {
 // All-playlists sidebar
 
 juke.controller('PlaylistsCtrl', function ($scope, PlaylistFactory) {
-
   PlaylistFactory.fetchAll()
   .then(function (playlists) {
     $scope.playlists = playlists;
@@ -32,10 +31,8 @@ juke.controller('PlaylistsCtrl', function ($scope, PlaylistFactory) {
 
 // Single-playlist view
 
-juke.controller('PlaylistCtrl', function ($scope, thePlaylist, PlaylistFactory, PlayerFactory) {
-
+juke.controller('PlaylistCtrl', function ($scope, thePlaylist, PlaylistFactory) {
   $scope.playlist = thePlaylist;
-
   $scope.addSong = function (song) {
     return PlaylistFactory.addSong($scope.playlist._id, song)
     .then(function (addedSong) {

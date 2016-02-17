@@ -3,11 +3,17 @@
 juke.factory('AlbumFactory', function ($http, SongFactory) {
 
   var AlbumFactory = {};
+  var allAlbums = null;
 
   AlbumFactory.fetchAll = function () {
-    return $http.get('/api/albums')
-    .then(response => response.data)
-    .then(albums => albums.map(AlbumFactory.convert) );
+    if(allAlbums) return allAlbums;
+    else { return $http.get('/api/albums')
+      .then(response => response.data)
+      .then(function(albums) {
+        allAlbums = albums.map(AlbumFactory.convert); 
+        return allAlbums;
+      });
+    } 
   };
 
   AlbumFactory.fetchById = function (id) {
